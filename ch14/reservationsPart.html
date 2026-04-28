@@ -7,20 +7,17 @@
 <link href="pacific.css" rel="stylesheet">
 <script>
 function validateForm() {
-    const phoneNumber = document.forms[0].myPhone.value
-     const regex = /^\d{3}-\d{3}-\d{4}$/;
-        if (regex.test(phoneNumber)) {
-          return true;
-        } else {
-          alert(
-            "Invalid phone number: This must be a 10 digit phone number with a 3 digit area code, " +
-            "a dash, 3 digits for the first part of the phone number, a dash, " +
-            "and 4 more digits for the remainder of the phone number."
-          );
-          return false;
-        }
-      }
- // end function validateForm
+if (document.forms[0].myPhone.value == "" ) {
+    alert("Phone field cannot be empty.");
+    return false;
+} // end if
+if (document.forms[0].myNights.value > 14) {
+    alert("Nights are more than 14. You can't stay more than two weeks.");
+    return false;
+} // end if
+alert("Phone and Nights are valid.");
+return true;
+} // end function validateForm
 </script>
 </head>
 <body>
@@ -60,7 +57,7 @@ function validateForm() {
   <label for="myEmail">*E-mail:</label>
   <input type="text" name="myEmail" id="myEmail" required>
   <label for="myPhone">*Phone:</label>
-  <input type="text" name="myPhone" id="myPhone">
+  <input type="text" name="myPhone" id="myPhone" minlength="10" maxlength="10">
   <label for="myDate">Arrival Date</label>
   <input type="date" name="myDate" id="myDate"> 
   <label for="myNights">Nights from 1 to 14:</label>
